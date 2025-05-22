@@ -1,20 +1,17 @@
-async function buscar() {
-    const titulo = document.getElementById('buscador').value;
-    const response = await fetch(`/api/libros/listar?titulo=${encodeURIComponent(titulo)}`);
-    
-    if (!response.ok) {
-        console.error('Error al buscar libros');
-        return;
-    }
-
-    const resultados = await response.json();
-
-    const lista = document.getElementById('resultados');
-    lista.innerHTML = ''; 
-
-    resultados.forEach(descripcion => {
-        const li = document.createElement('li');
-        li.textContent = descripcion;
-        lista.appendChild(li);
+document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('buscador').addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+            buscar();
+        }
     });
+});
+
+function buscar() {
+    const titulo = document.getElementById('buscador').value;
+    if (!titulo.trim()) return;
+    window.location.href = `/resultados.html?titulo=${encodeURIComponent(titulo)}`;
+}
+
+function mostrarDetalle(descripcion) {
+    alert("Seleccionaste:\n" + descripcion);
 }

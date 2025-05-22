@@ -13,7 +13,7 @@ const buscarLibro = async (req, res) => {
         res.json(libro);
     } catch (error) {
         console.error('Error real:', error);
-        res.status(500).json({ error: 'Error al buscar el libro'})
+        res.status(500).json({ error: 'Error al buscar el libro'});
     }
 };
 
@@ -33,7 +33,26 @@ const listarLibros = async (req, res) => {
     }
 };
 
+var favoritos = [];
+
+const agregarFavorito = (req, res) => {
+    const libro = req.body;
+
+    if (favoritos.find(l => l.key === libro.key)) {
+        return res.status(409).json({ error: 'Libro ya en favoritos' });
+    }
+
+    favoritos.push(libro);
+    res.status(201).json({ mensaje: 'Agregado a favoritos' });
+}
+
+const listarFavoritos = (req, res) => {
+    res.json(favoritos);
+}
+
 module.exports = {
     buscarLibro,
-    listarLibros
+    listarLibros,
+    agregarFavorito,
+    listarFavoritos
 };

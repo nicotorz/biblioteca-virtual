@@ -33,8 +33,14 @@ const listarResultadosLibro = async (titulo) => {
     if (!respuesta.ok) {
         throw new Error (`HTTP error! status: ${respuesta.status}`);
     }
+    
 
     const datos = await respuesta.json();
+
+    if (datos.docs.length === 0) {
+        throw new Error ('No se encontraron')
+    }
+    
     const libros = datos.docs.map(book => {
         const tituloLimpio = book.title || 'Titulo desconocido';
         const autor = book.author_name?.[0] || 'Autor desconocido';
@@ -42,7 +48,7 @@ const listarResultadosLibro = async (titulo) => {
         const año = book.first_publish_year || 'Año de publicacion desconocido';
 
         const libroLimpio = new Libro(tituloLimpio, autor, key, año);
-        return libroLimpio.obtenerDescripcion();
+        return libroLimpio
     });
     return libros;
 }
