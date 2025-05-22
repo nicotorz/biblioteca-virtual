@@ -25,6 +25,29 @@ const obtenerDatosLibro = async (titulo) =>  {
     return new Libro(tituloLimpio, autor, key, año);
 };
 
+const listarResultadosLibro = async (titulo) => {
+    const url = `https://openlibrary.org/search.json?title=${encodeURIComponent(titulo)}`
+
+    const respuesta = await fetch(url);
+
+    if (!respuesta.ok) {
+        throw new Error (`HTTP error! status: ${respuesta.status}`);
+    }
+
+    const datos = await respuesta.json();
+    const libros = datos.docs.map(book => {
+        const tituloLimpio = book.title || 'Titulo desconocido';
+        const autor = book.author_name?.[0] || 'Autor desconocido';
+        const key = book.key || 'Key no disponible';
+        const año = book.first_publish_year || 'Año de publicacion desconocido';
+
+        const libroLimpio = new Libro(tituloLimpio, autor, key, año);
+        return libroLimpio.obtenerDescripcion();
+    });
+    return libros;
+}
+
 module.exports = {
     obtenerDatosLibro,
+    listarResultadosLibro
 };

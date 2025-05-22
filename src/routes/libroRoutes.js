@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const { buscarLibro } = require('../controller/libroController.js');
+const { buscarLibro, listarLibros } = require('../controller/libroController.js');
 
-router.get('/', buscarLibro);
+router.get('/buscar', buscarLibro);
+router.get('/listar', listarLibros);
 
 module.exports = router;
