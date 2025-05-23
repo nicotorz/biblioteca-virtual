@@ -11,7 +11,3 @@ function buscar() {
     if (!titulo.trim()) return;
     window.location.href = `/resultados.html?titulo=${encodeURIComponent(titulo)}`;
 }
-
-function mostrarDetalle(descripcion) {
-    alert("Seleccionaste:\n" + descripcion);
-}

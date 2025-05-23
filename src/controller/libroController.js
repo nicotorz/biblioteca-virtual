@@ -41,7 +41,7 @@ const agregarFavorito = (req, res) => {
     if (favoritos.find(l => l.key === libro.key)) {
         return res.status(409).json({ error: 'Libro ya en favoritos' });
     }
-
+    
     favoritos.push(libro);
     res.status(201).json({ mensaje: 'Agregado a favoritos' });
 }
@@ -50,9 +50,23 @@ const listarFavoritos = (req, res) => {
     res.json(favoritos);
 }
 
+const eliminarFavorito = (req, res) => {
+    const { key } = req.params;
+    const index = favoritos.findIndex(libro => libro.key === `/works/${key}`);
+
+    if (index === -1) {
+        return res.status(404).json({ error: 'Libro no encontrado en favoritos' });
+    }
+
+    favoritos.splice(index, 1);
+    res.json({ mensaje: 'Libro eliminado de favoritos' });
+};
+
+
 module.exports = {
     buscarLibro,
     listarLibros,
     agregarFavorito,
-    listarFavoritos
+    listarFavoritos,
+    eliminarFavorito
 };

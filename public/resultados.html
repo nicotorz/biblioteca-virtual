@@ -1,13 +1,25 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <title>Resultados de Búsqueda</title>
-</head>
-<body>
-  <h1>Resultados de la búsqueda</h1>
-  <ul id="resultados"></ul>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Resultados de búsqueda</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <header>
+            <h1>Resultados</h1>
+            <nav>
+                <a href="/favoritos.html">Ver favoritos</a>
+                <a href="/index.html" style="margin-left: 15px;">Inicio</a>
+            </nav>
+        </header>
 
-  <script src="resultados.js"></script>
-</body>
+        <main>
+            <ul id="resultados"></ul>
+        </main>
+
+        <script src="utils.js"></script>
+        <script src="resultados.js"></script>
+    </body>
 </html>

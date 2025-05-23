@@ -1,23 +1,27 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Biblioteca Virtual</title>
-</head>
-<body>
-    <header>
-        <h1>Biblioteca Virtual</h1>
-    </header>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="style.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Biblioteca Virtual</title>
+    </head>
+    <body>
+        <header>
+            <h1>Biblioteca Virtual</h1>
+            <nav>
+                <a href="/favoritos.html">Ver favoritos</a>
+            </nav>
+        </header>
 
-    <main>
-        <section>
-            <label for="buscador">Buscar libro:</label>
-            <input type="text" id="buscador" placeholder="Buscar por titulo, autor" />
-            <button onclick="buscar()">Buscar</button>
-        </section>
-    </main>
+        <main>
+            <section>
+                <label for="buscador">Buscar libro:</label>
+                <input type="text" id="buscador" placeholder="Buscar por titulo, autor" />
+                <button onclick="buscar()">Buscar</button>
+            </section>
+        </main>
 
-    <script src="script.js"></script>
-</body>
+        <script src="script.js"></script>
+    </body>
 </html>

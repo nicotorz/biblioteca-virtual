@@ -20,13 +20,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
 
         resultados.forEach(libro => {
-            const tituloLibro = libro.title;
-            const li = document.createElement('li');
-            const enlace = document.createElement('a');
-            enlace.href = `https://openlibrary.org${libro.key}`;
-            enlace.textContent = obtenerDescripcion(libro);
-            li.appendChild(enlace);
-            lista.appendChild(li);
+            renderLibroEnLista(libro, lista, false); 
         });
 
     } catch (err) {
@@ -36,4 +30,28 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 function obtenerDescripcion(libro) {
     return `${libro.titulo} del autor: ${libro.autor} publicado en el año: ${libro.añoDePublicacion}`
+}
+
+async function agregarAFavoritos(libro) {
+    try {
+        const response = await fetch('/api/libros/agregar', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(libro)
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            console.log(data.error || 'Error al agregar a favoritos');
+            return;
+        }
+
+        alert('Agregado a favoritos correctamente');
+
+    } catch (error) {
+        alert(error(error));
+    }
 }
