@@ -1,12 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const { buscarLibro, listarLibros, listarFavoritos, agregarFavorito, eliminarFavorito } = require('../controller/libroController.js');
+const api = require('../controller/libroController.js');
 
-router.get('/buscar', buscarLibro);
-router.get('/listar', listarLibros);
-router.get('/favoritos', listarFavoritos);
-router.post('/agregar', agregarFavorito);
-router.delete('/favoritos/:key', eliminarFavorito);
+router.get('/buscar', api.buscarLibro);
+router.get('/listar', api.listarLibros);
+router.get('/favoritos', api.listarFavoritos);
+router.post('/agregar', api.agregarFavorito);
+router.delete('/favoritos/:key', api.eliminarFavorito);
 
 
 module.exports = router;

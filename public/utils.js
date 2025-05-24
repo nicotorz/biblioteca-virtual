@@ -27,4 +27,16 @@ function renderLibroEnLista(libro, lista, esFavorito = false) {
 
 function obtenerDescripcion(libro) {
     return `${libro.titulo} del autor: ${libro.autor} publicado en el año: ${libro.añoDePublicacion}`;
-}   
+}  
+
+function mostrarToast(mensaje, tipo, duracion = 3000) {
+    const container = document.getElementById('toast-container');
+    const toast = document.createElement('div');
+    toast.className = `toast ${tipo}`;
+    toast.textContent = mensaje;
+    container.appendChild(toast);
+
+    setTimeout(() => {
+        toast.remove();
+    }, duracion);
+}

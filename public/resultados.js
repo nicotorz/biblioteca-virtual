@@ -45,13 +45,13 @@ async function agregarAFavoritos(libro) {
         const data = await response.json();
 
         if (!response.ok) {
-            console.log(data.error || 'Error al agregar a favoritos');
+            mostrarToast(data.error || 'Error al agregar a favoritos', 'error');
             return;
         }
 
-        alert('Agregado a favoritos correctamente');
+        mostrarToast('Agregado a favoritos correctamente', "success");
 
     } catch (error) {
-        alert(error(error));
+        mostrarToast(error(error), "error");
     }
 }

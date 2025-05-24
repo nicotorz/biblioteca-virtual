@@ -1,5 +1,4 @@
-const { obtenerDatosLibro } = require('../services/openLibraryService.js');
-const { listarResultadosLibro } = require('../services/openLibraryService.js');
+const { obtenerDatosLibro, listarResultadosLibro } = require('../services/openLibraryService.js');
 
 const buscarLibro = async (req, res) => {
     const titulo = req.query.titulo;
@@ -12,8 +11,8 @@ const buscarLibro = async (req, res) => {
         const libro = await obtenerDatosLibro(titulo);
         res.json(libro);
     } catch (error) {
-        console.error('Error real:', error);
-        res.status(500).json({ error: 'Error al buscar el libro'});
+        console.error("Error real:", error);
+        res.status(500).json({ error: "Error al buscar el libro"});
     }
 };
 

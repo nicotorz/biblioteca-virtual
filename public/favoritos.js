@@ -33,14 +33,13 @@ async function eliminarFavorito(key, elementoLista) {
         const data = await response.json();
 
         if (!response.ok) {
-            alert(data.error || 'Error al eliminar');
+            mostrarToast(data.error || 'Error al eliminar', "error");
             return;
         }
 
         elementoLista.remove();
     } catch (error) {
         console.error(error);
-        alert('Error al conectar con el servidor');
     }
 }
 
