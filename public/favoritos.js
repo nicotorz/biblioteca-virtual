@@ -1,14 +1,24 @@
-document.addEventListener('DOMContentLoaded', async () => {
+document.addEventListener('DOMContentLoaded', () => {
+    cargarFavoritos(); 
+});
+
+async function cargarFavoritos(desde = null) {
     const lista = document.getElementById('lista-favoritos');
+    lista.innerHTML = '';
 
     try {
-        const response = await fetch('/api/libros/favoritos');
+        let url = '/api/libros/favoritos';
+        if (desde) {
+            url += `?desde=${desde}`;
+        }
+
+        const response = await fetch(url);
         if (!response.ok) throw new Error('Error al obtener favoritos');
 
         const favoritos = await response.json();
 
         if (favoritos.length === 0) {
-            lista.innerHTML = '<li>Aún no agregaste ningún libro a favoritos.</li>';
+            lista.innerHTML = '<li style="text-align: center; font-style: italic;">No se encontraron favoritos para ese año.</li>';
             return;
         }
 
@@ -20,7 +30,24 @@ document.addEventListener('DOMContentLoaded', async () => {
         lista.innerHTML = '<li>Error al cargar los favoritos.</li>';
         console.error(err);
     }
-});
+}
+
+function filtrarFavoritos() {
+    const input = document.getElementById('filtro-anio');
+    const anio = parseInt(input.value.trim());
+
+    if (isNaN(anio)) {
+        mostrarToast('Ingresá un año válido', 'warning');
+        return;
+    }
+
+    cargarFavoritos(anio);
+}
+
+function limpiarFiltro() {
+    document.getElementById('filtro-anio').value = '';
+    cargarFavoritos(); 
+}
 
 async function eliminarFavorito(key, elementoLista) {
     const keySinSlash = key.replace('/works/', '');
@@ -38,11 +65,18 @@ async function eliminarFavorito(key, elementoLista) {
         }
 
         elementoLista.remove();
+
+        const lista = document.getElementById('lista-favoritos');
+        if (lista.children.length === 0) {
+            lista.innerHTML = '<li style="text-align: center; font-style: italic;">No tenés libros favoritos todavía.</li>';
+        }
+
+        mostrarToast('Libro eliminado de favoritos', 'success');
     } catch (error) {
         console.error(error);
+        mostrarToast('Error al conectar con el servidor', 'error');
     }
 }
-
 
 function obtenerDescripcion(libro) {
     return `${libro.titulo} del autor: ${libro.autor} publicado en el año: ${libro.añoDePublicacion}`;

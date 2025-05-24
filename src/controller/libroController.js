@@ -46,7 +46,16 @@ const agregarFavorito = (req, res) => {
 }
 
 const listarFavoritos = (req, res) => {
-    res.json(favoritos);
+    const desde = parseInt(req.query.desde);
+    let resultado = favoritos;
+
+    if (!isNaN(desde)) {
+       resultado = favoritos.filter(libro =>
+            !isNaN(libro.añoDePublicacion) && libro.añoDePublicacion >= desde
+       );
+    }
+
+    res.json(resultado);
 }
 
 const eliminarFavorito = (req, res) => {
