@@ -11,7 +11,6 @@ const buscarLibro = async (req, res) => {
         const libro = await obtenerDatosLibro(titulo);
         res.json(libro);
     } catch (error) {
-        console.error("Error real:", error);
         res.status(500).json({ error: "Error al buscar el libro"});
     }
 };
@@ -27,7 +26,6 @@ const listarLibros = async (req, res) => {
         const resultados = await listarResultadosLibro(titulo);
         res.json(resultados);
     } catch (error) {
-        console.error('Error:', error);
         res.status(500).json({ error: 'Error al listar libros' });
     }
 };

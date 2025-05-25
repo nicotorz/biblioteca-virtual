@@ -8,6 +8,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function buscar() {
     const titulo = document.getElementById('buscador').value;
-    if (!titulo.trim()) return;
+    if (!titulo.trim()) { 
+        mostrarToast('Ingresa un titulo para empezar a buscar', 'error');
+        return;
+    }
     window.location.href = `/resultados.html?titulo=${encodeURIComponent(titulo)}`;
 }

@@ -53,6 +53,10 @@ li {
 a {
     text-decoration: none;
     color: #132A3F;
+    display: inline-block;
+    text-decoration: none;
+    color: inherit;
+    margin-bottom: 4px;
 }
 
 a:hover {
@@ -118,4 +122,34 @@ nav a:hover {
 @keyframes fadeout {
     from { opacity: 0.95; }
     to { opacity: 0; }
+}
+
+.badge {
+    margin-left: 8px;
+    padding: 2px 6px;
+    font-size: 0.7rem;
+    border-radius: 8px;
+    font-weight: 500;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.badge.clásico {
+    background-color: #ffe4b5;
+    color: #333;
+}
+
+.badge.moderno {
+    background-color: #cce5ff;
+    color: #004085;
+}
+
+.badge.reciente {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.badge.muy-antiguo {
+    background-color: #f8d7da;
+    color: #721c24;
 }

@@ -38,7 +38,7 @@ const listarResultadosLibro = async (titulo) => {
     const datos = await respuesta.json();
 
     if (datos.docs.length === 0) {
-        throw new Error ('No se encontraron')
+        return [];
     }
     
     const libros = datos.docs.map(book => {

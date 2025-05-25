@@ -1,29 +1,36 @@
 function renderLibroEnLista(libro, lista, esFavorito = false) {
     const li = document.createElement('li');
 
+    // Descripción basica.
+    const descripcion = document.createElement('span');
+    descripcion.textContent = `${libro.titulo} del autor: ${libro.autor} publicado en el año: ${libro.añoDePublicacion}`;
+
+    // Etiqueta segun la categoria.
+    const badge = document.createElement('span');
+    badge.textContent = libro.categoria;
+    badge.classList.add('badge', libro.categoria.toLowerCase().replace(/\s+/g, '-'));
+
+    // Redirección a OpenLibrary por la key del libro.
     const enlace = document.createElement('a');
     enlace.href = `https://openlibrary.org${libro.key}`;
-    enlace.textContent = obtenerDescripcion(libro);
     enlace.target = '_blank';
+    enlace.appendChild(descripcion);
+    enlace.appendChild(badge);
 
     li.appendChild(enlace);
 
-    if (esFavorito) {
-        const botonEliminar = document.createElement('button');
-        botonEliminar.textContent = 'Eliminar de favoritos';
-        botonEliminar.style.marginLeft = '10px';
-        botonEliminar.onclick = () => eliminarFavorito(libro.key, li);
-        li.appendChild(botonEliminar);
-    } else {
-        const botonAgregar = document.createElement('button');
-        botonAgregar.textContent = 'Agregar a favoritos';
-        botonAgregar.style.marginLeft = '10px';
-        botonAgregar.onclick = () => agregarAFavoritos(libro);
-        li.appendChild(botonAgregar);
-    }
+    // Boton de agregar o eliminar de favoritos segun contexto.
+    const boton = document.createElement('button');
+    boton.textContent = esFavorito ? 'Eliminar de favoritos' : 'Agregar a favoritos';
+    boton.onclick = () => esFavorito
+        ? eliminarFavorito(libro.key, li)
+        : agregarAFavoritos(libro);
+    li.appendChild(boton);
 
     lista.appendChild(li);
 }
+
+
 
 function obtenerDescripcion(libro) {
     return `${libro.titulo} del autor: ${libro.autor} publicado en el año: ${libro.añoDePublicacion}`;
