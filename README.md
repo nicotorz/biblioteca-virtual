@@ -30,7 +30,7 @@ Una aplicación simple construida con **Node.js**, **Express**, y **HTML/CSS/JS*
 Para ejecutar el proyecto en un entorno local:
 1. Clonar el repositorio:
    ```bash
-   git clone https://github.com/usuario/proyecto-mercado-libre.git
+   git clone https://github.com/nicotorz/biblioteca-virtual.git
    ```
 2. Instalar las dependencias:
    ```bash
