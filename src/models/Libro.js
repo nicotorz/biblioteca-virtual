@@ -1,4 +1,4 @@
-const CATEGORIAS_POR_ANIO = require('../rules/categorias');
+const CATEGORIAS_POR_ANIO = require('../utils/categorias');
 class Libro {
   constructor(titulo, autor, key, añoDePublicacion) {
     this.titulo = titulo;

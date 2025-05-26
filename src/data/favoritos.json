@@ -1,0 +1,30 @@
+[
+  {
+    "titulo": "El Quijote",
+    "autor": "Alonso Fernández de Avellaneda",
+    "key": "/works/OL10364789W",
+    "añoDePublicacion": 1944,
+    "categoria": "Muy antiguo"
+  },
+  {
+    "titulo": "El Principito",
+    "autor": "Antoine de Saint-Exupéry",
+    "key": "/works/OL34766796W",
+    "añoDePublicacion": 2018,
+    "categoria": "Reciente"
+  },
+  {
+    "titulo": "Harry Potter and the Philosopher's Stone",
+    "autor": "J. K. Rowling",
+    "key": "/works/OL82563W",
+    "añoDePublicacion": 1997,
+    "categoria": "Clásico"
+  },
+  {
+    "titulo": "Clean Code",
+    "autor": "Robert C. Martin",
+    "key": "/works/OL17618370W",
+    "añoDePublicacion": 2008,
+    "categoria": "Moderno"
+  }
+]

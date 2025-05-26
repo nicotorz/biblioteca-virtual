@@ -14,7 +14,7 @@ async function cargarFavoritos(desde = null) {
 
         const response = await fetch(url);
         if (!response.ok) throw new Error('Error al obtener favoritos');
-
+        
         const favoritos = await response.json();
 
         if (favoritos.length === 0) {

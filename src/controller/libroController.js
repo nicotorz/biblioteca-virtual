@@ -1,4 +1,5 @@
-const { obtenerDatosLibro, listarResultadosLibro } = require('../services/openLibraryService.js');
+const { obtenerDatosLibro, listarResultadosLibro } = require('../services/openLibraryService');
+const { leerFavoritos, guardarFavoritos } = require('../services/favoritosService')
 
 const buscarLibro = async (req, res) => {
     const titulo = req.query.titulo;
@@ -30,41 +31,45 @@ const listarLibros = async (req, res) => {
     }
 };
 
-var favoritos = [];
-
 const agregarFavorito = (req, res) => {
     const libro = req.body;
+    const favoritos = leerFavoritos();
 
     if (favoritos.find(l => l.key === libro.key)) {
         return res.status(409).json({ error: 'Libro ya en favoritos' });
     }
     
     favoritos.push(libro);
+    guardarFavoritos(favoritos);
     res.status(201).json({ mensaje: 'Agregado a favoritos' });
 }
 
 const listarFavoritos = (req, res) => {
     const desde = parseInt(req.query.desde);
-    let resultado = favoritos;
+    const favoritos = leerFavoritos();
 
+    let resultado = favoritos;
     if (!isNaN(desde)) {
-       resultado = favoritos.filter(libro =>
+        resultado = favoritos.filter(libro =>
             !isNaN(libro.añoDePublicacion) && libro.añoDePublicacion >= desde
-       );
+        );
     }
 
-    res.json(resultado);
-}
+    return res.json(resultado);
+};
+
 
 const eliminarFavorito = (req, res) => {
     const { key } = req.params;
-    const index = favoritos.findIndex(libro => libro.key === `/works/${key}`);
+    const favoritos = leerFavoritos();
 
+    const index = favoritos.findIndex(libro => libro.key === `/works/${key}`);
     if (index === -1) {
         return res.status(404).json({ error: 'Libro no encontrado en favoritos' });
     }
 
     favoritos.splice(index, 1);
+    guardarFavoritos(favoritos);
     res.json({ mensaje: 'Libro eliminado de favoritos' });
 };
 
