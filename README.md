@@ -11,6 +11,8 @@ Una aplicación simple construida con **Node.js**, **Express**, y **HTML/CSS/JS*
 - Fetch API (para consumir APIs)
 - Nodemon (modo desarrollo)
 - OpenLibrary API
+- Jest (para testear)
+- Joi (para agregar validaciones a request HTTP)
 
 ---
 

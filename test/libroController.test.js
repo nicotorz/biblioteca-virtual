@@ -1,7 +1,7 @@
 const request = require('supertest');
 const app = require('../src/server'); 
 
-describe('Favoritos API', () => {
+describe('Libro controller', () => {
 
   it('deberia buscar un libro por su titulo', async () => {
     const response = await request(app).get('/api/libros/buscar?titulo=Harry%20Potter');
