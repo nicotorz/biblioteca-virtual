@@ -1,3 +1,4 @@
+/* === Layout === */
 body {
     font-family: Arial, sans-serif;
     background-color: #E8F1F2;
@@ -5,11 +6,55 @@ body {
     padding: 20px;
 }
 
-h1, h2 {
+header {
+    background-color: #383F51;
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 8px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+section {
+    margin-top: 20px;
+}
+
+/* === Tipografía === */
+h1 {
     color: #E8F1F2;
 }
 
-input[type="text"] {
+a {
+    text-decoration: none;
+    color: #132A3F;
+    display: inline-block;
+    margin-bottom: 4px;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* === Navegación === */
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* === Formularios === */
+input[type="text"],
+input[type="number"] {
     padding: 8px;
     width: 300px;
     margin-right: 10px;
@@ -30,10 +75,7 @@ button:hover {
     background-color: #0E1F2F;
 }
 
-section {
-    margin-top: 20px;
-}
-
+/* === Listas === */
 ul {
     list-style-type: none;
     padding-left: 0;
@@ -50,44 +92,7 @@ li {
     align-items: center;
 }
 
-a {
-    text-decoration: none;
-    color: #132A3F;
-    display: inline-block;
-    text-decoration: none;
-    color: inherit;
-    margin-bottom: 4px;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-header {
-    background-color: #383F51;
-    color: white;
-    padding: 15px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-radius: 8px;
-}
-
-header h1 {
-    margin: 0;
-    font-size: 1.5rem;
-}
-
-nav a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-nav a:hover {
-    text-decoration: underline;
-}
-
+/* === Notificaciones (Toast) === */
 #toast-container {
     position: fixed;
     bottom: 20px;
@@ -124,6 +129,7 @@ nav a:hover {
     to { opacity: 0; }
 }
 
+/* === Etiquetas (Categorías) === */
 .badge {
     margin-left: 8px;
     padding: 2px 6px;
@@ -134,7 +140,7 @@ nav a:hover {
     vertical-align: middle;
 }
 
-.badge.clásico {
+.badge.clasico {
     background-color: #ffe4b5;
     color: #333;
 }
@@ -152,4 +158,36 @@ nav a:hover {
 .badge.muy-antiguo {
     background-color: #f8d7da;
     color: #721c24;
+}
+
+/* === Página de error === */
+.error-page {
+    text-align: center;
+    margin-top: 100px;
+}
+
+.error-page h1 {
+    font-size: 5rem;
+    color: #1C3E5E;
+    margin-bottom: 10px;
+}
+
+.error-page p {
+    font-size: 1.2rem;
+    color: #132A3F;
+    margin-bottom: 20px;
+}
+
+.error-page a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #1C3E5E;
+    color: #E8F1F2;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.error-page a:hover {
+    background-color: #0E1F2F;
 }
