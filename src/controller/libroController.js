@@ -1,5 +1,14 @@
 const { obtenerDatosLibro, listarResultadosLibro } = require('../services/openLibraryService');
 const { leerFavoritos, guardarFavoritos } = require('../services/favoritosService')
+const Joi = require('joi');
+
+const esquemaLibro = Joi.object({
+  titulo: Joi.string().required(),
+  autor: Joi.string().required(),
+  key: Joi.string().required(),
+  añoDePublicacion: Joi.number().required(),
+  categoria: Joi.string().required()
+});
 
 const buscarLibro = async (req, res) => {
     const titulo = req.query.titulo;
@@ -32,17 +41,18 @@ const listarLibros = async (req, res) => {
 };
 
 const agregarFavorito = (req, res) => {
-    const libro = req.body;
-    const favoritos = leerFavoritos();
+  const libro = req.body;
+  const favoritos = leerFavoritos();
 
-    if (favoritos.find(l => l.key === libro.key)) {
-        return res.status(409).json({ error: 'Libro ya en favoritos' });
-    }
-    
-    favoritos.push(libro);
-    guardarFavoritos(favoritos);
-    res.status(201).json({ mensaje: 'Agregado a favoritos' });
-}
+  if (favoritos.find(l => l.key === libro.key)) {
+    return res.status(409).json({ error: 'Libro ya en favoritos' });
+  }
+
+  favoritos.push(libro);
+  guardarFavoritos(favoritos);
+
+  res.status(201).json({ mensaje: 'Agregado a favoritos' });
+};
 
 const listarFavoritos = (req, res) => {
     const desde = parseInt(req.query.desde);

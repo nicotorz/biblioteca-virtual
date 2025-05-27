@@ -16,6 +16,7 @@
     "biblioteca-virtual": "file:",
     "express": "^5.1.0",
     "jest": "^29.7.0",
+    "joi": "^17.13.3",
     "node-fetch": "^3.3.2",
     "supertest": "^7.1.1"
   },

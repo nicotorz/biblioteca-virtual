@@ -48,8 +48,8 @@ async function agregarAFavoritos(libro) {
             mostrarToast(data.error || 'Error al agregar a favoritos', 'error');
             return;
         }
-
-        mostrarToast('Agregado a favoritos correctamente', "success");
+        
+        mostrarToast(data.mensaje || 'Agregado a favoritos correctamente', "success");
 
     } catch (error) {
         mostrarToast(error(error), "error");

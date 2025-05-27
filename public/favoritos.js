@@ -71,7 +71,7 @@ async function eliminarFavorito(key, elementoLista) {
             lista.innerHTML = '<li style="text-align: center; font-style: italic;">No tenés libros favoritos todavía.</li>';
         }
 
-        mostrarToast('Libro eliminado de favoritos', 'success');
+        mostrarToast(data.mensaje, 'success');
     } catch (error) {
         console.error(error);
         mostrarToast('Error al conectar con el servidor', 'error');

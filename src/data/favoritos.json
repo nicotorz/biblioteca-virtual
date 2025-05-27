@@ -1,1 +1,16 @@
-[]
+[
+  {
+    "titulo": "Antiguo",
+    "autor": "Autor A",
+    "key": "/works/FILTRO_2020",
+    "añoDePublicacion": 1920,
+    "categoria": "Muy antiguo"
+  },
+  {
+    "titulo": "Test Book",
+    "autor": "Autor Test",
+    "key": "/works/TEST123",
+    "añoDePublicacion": 2023,
+    "categoria": "Reciente"
+  }
+]
