@@ -18,7 +18,7 @@ async function cargarFavoritos(desde = null) {
         const favoritos = await response.json();
 
         if (favoritos.length === 0) {
-            lista.innerHTML = '<li style="text-align: center; font-style: italic;">No se encontraron favoritos para ese año.</li>';
+            lista.innerHTML = '<li style="text-align: center; font-style: italic;">No se encontraron resultados.</li>';
             return;
         }
 

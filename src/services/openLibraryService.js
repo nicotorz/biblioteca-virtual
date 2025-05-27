@@ -6,7 +6,7 @@ const obtenerDatosLibro = async (titulo) =>  {
     const respuesta = await fetch(url);
 
     if (!respuesta.ok) {
-        throw new Error(`HTTP error! status: ${respuesta.status}`);
+        throw new Error(`HTTP error status: ${respuesta.status}`);
     }
 
     const datos = await respuesta.json();
@@ -19,8 +19,8 @@ const obtenerDatosLibro = async (titulo) =>  {
 
     const tituloLimpio = libro.title || 'Titulo desconocido';
     const autor = libro.author_name?.[0] || 'Autor desconocido';
-    const key = libro.key || 'ISBN no disponible';
-    const año = libro.first_publish_year || 'Año de publicacion desconocido'
+    const key = libro.key || 'Key no disponible';
+    const año = libro.first_publish_year || 'Desconocido'
 
     return new Libro(tituloLimpio, autor, key, año);
 };
@@ -45,7 +45,7 @@ const listarResultadosLibro = async (titulo) => {
         const tituloLimpio = book.title || 'Titulo desconocido';
         const autor = book.author_name?.[0] || 'Autor desconocido';
         const key = book.key || 'Key no disponible';
-        const año = book.first_publish_year || 'Año de publicacion desconocido';
+        const año = book.first_publish_year || 'Desconocido';
 
         const libroLimpio = new Libro(tituloLimpio, autor, key, año);
         return libroLimpio

@@ -34,7 +34,7 @@ function obtenerDescripcion(libro) {
 
 async function agregarAFavoritos(libro) {
     try {
-        const response = await fetch('/api/libros/agregar', {
+        const response = await fetch('/api/libros/favoritos', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

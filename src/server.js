@@ -9,6 +9,10 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, '../public')));
 app.use('/api/libros', libroRoutes);
 
-app.listen(PORT, () => {
-    console.log(`Servidor corriendo en http://localhost:${PORT}`)
-})
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`Servidor escuchando en http://localhost:${PORT}`);
+  });
+}
+
+module.exports = app;
