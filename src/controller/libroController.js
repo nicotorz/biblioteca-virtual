@@ -1,14 +1,5 @@
 const { obtenerDatosLibro, listarResultadosLibro } = require('../services/openLibraryService');
 const { leerFavoritos, guardarFavoritos } = require('../services/favoritosService')
-const Joi = require('joi');
-
-const esquemaLibro = Joi.object({
-  titulo: Joi.string().required(),
-  autor: Joi.string().required(),
-  key: Joi.string().required(),
-  añoDePublicacion: Joi.number().required(),
-  categoria: Joi.string().required()
-});
 
 const buscarLibro = async (req, res) => {
     const titulo = req.query.titulo;
